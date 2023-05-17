@@ -92,5 +92,42 @@ autocmd BufNewFile ~/Documents/diary/[0-9]*.md :silent %!echo "\# `date -d '%:t:
     require("luasnip.loaders.from_vscode").lazy_load { paths = { "./lua/user/snippets" } } -- load snippets paths
   end,
   dependencies = { "rafamadriz/friendly-snippets" },
-}
+},
+-- Leap
+		{
+			"ggandor/leap.nvim",
+			lazy = false,
+			config = function()
+				local leap = require("leap")
+				leap.setup({
+					highlight_unlabeled_phase_one_targets = false,
+				})
+				leap.add_default_mappings()
+			end,
+		},
+    {
+      "nvim-neorg/neorg",
+			lazy = false,
+      build = ":Neorg sync-parsers",
+      opts = {
+          load = {
+              ["core.defaults"] = {}, -- Loads default behaviour
+              ["core.concealer"] = {}, -- Adds pretty icons to your documents
+              ["core.dirman"] = { -- Manages Neorg workspaces
+                  config = {
+                      workspaces = {
+                          notes = "~/Documents/wiki2",
+                      },
+                  },
+              },
+          },
+      },
+      dependencies = { { "nvim-lua/plenary.nvim" } },
+      init = function()
+         vim.keymap.set("n", "<Leader>ww", ":tabnew | Neorg workspace notes<CR>",
+                { desc = "Open Neorg's notes workspace", silent = true })
+         vim.keymap.set("n", "<Leader>w<Leader>w", ":Neorg journal today<CR>",
+                { desc = "Open Neorg's notes journal today", silent = true })
+      end,
+    }
 }
