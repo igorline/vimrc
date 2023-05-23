@@ -113,6 +113,8 @@ autocmd BufNewFile ~/Documents/diary/[0-9]*.md :silent %!echo "\# `date -d '%:t:
           load = {
               ["core.defaults"] = {}, -- Loads default behaviour
               ["core.concealer"] = {}, -- Adds pretty icons to your documents
+              ["core.export"] = {}, -- Adds export to markdown
+              ["core.export.markdown"] = {}, -- Adds export to markdown
               ["core.dirman"] = { -- Manages Neorg workspaces
                   config = {
                       workspaces = {
