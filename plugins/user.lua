@@ -131,5 +131,15 @@ autocmd BufNewFile ~/Documents/diary/[0-9]*.md :silent %!echo "\# `date -d '%:t:
          vim.keymap.set("n", "<Leader>w<Leader>w", ":Neorg journal today<CR>",
                 { desc = "Open Neorg's notes journal today", silent = true })
       end,
+    },
+    {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+        require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+        })
+    end
     }
 }
