@@ -150,9 +150,10 @@ vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
                       },
                   },
               },
+              ["core.integrations.telescope"] = {}, -- Adds export to markdown
           },
       },
-      dependencies = { { "nvim-lua/plenary.nvim" } },
+      dependencies = { { "nvim-lua/plenary.nvim" }, { "nvim-neorg/neorg-telescope" } },
       init = function()
          vim.keymap.set("n", "<Leader>ww", ":tabnew | Neorg workspace notes<CR>",
                 { desc = "Open Neorg's notes workspace", silent = true })
@@ -169,7 +170,7 @@ vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
             -- Configuration here, or leave empty to use defaults
         })
     end
-    }
+    },
 {
   "folke/todo-comments.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
