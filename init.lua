@@ -26,33 +26,110 @@ return {
     underline = true,
   },
 
-  lsp = {
-    -- customize lsp formatting options
-    formatting = {
-      -- control auto formatting on save
-      format_on_save = {
-        enabled = true, -- enable or disable format on save globally
-        allow_filetypes = { -- enable format on save for specified filetypes only
-          -- "go",
-        },
-        ignore_filetypes = { -- disable format on save for specified filetypes
-          -- "python",
-          "solidity"
-        },
-      },
-      disabled = { -- disable formatting capabilities for the listed language servers
-        -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
-        -- "lua_ls",
-      },
-      timeout_ms = 1000, -- default format timeout
-      -- filter = function(client) -- fully override the default formatting function
-      --   return true
-      -- end
-    },
-    -- enable servers that you already have installed without mason
-    servers = {
-      -- "pyright"
-    },
+  -- Extend LSP configuration
+	lsp = {
+		-- enable servers that you already have installed without mason
+		servers = {
+			-- {
+   --  			cmd = { 'circom-lsp' },
+   --  			filetypes = { 'circom' },
+   --  			root_dir = function()
+   --      			return lsp.dir.find_first({ 'package.json' }) or vim.api.nvim_buf_get_name(0)
+   --  			end,
+			-- }
+		},
+		formatting = {
+			-- control auto formatting on save
+			format_on_save = {
+				enabled = true, -- enable or disable format on save globally
+				allow_filetypes = { -- enable format on save for specified filetypes only
+					-- "go",
+				},
+				ignore_filetypes = { -- disable format on save for specified filetypes
+					"solidity",
+					-- "rust"
+				},
+			},
+			disabled = { -- disable formatting capabilities for the listed language servers
+				-- "sumneko_lua",
+			},
+			timeout_ms = 1000, -- default format timeout
+			-- filter = function(client) -- fully override the default formatting function
+			--   return true
+			-- end
+		},
+		-- easily add or disable built in mappings added during LSP attaching
+		mappings = {
+			n = {
+				-- ["<leader>lf"] = false -- disable formatting keymap
+			},
+		},
+		-- add to the global LSP on_attach function
+		-- on_attach = function(client, bufnr)
+		-- end,
+
+		-- override the LSP setup handler function based on server name
+		setup_handlers = {
+			-- first function changes the default setup handler
+			-- function(server, opts)
+			--   require("lspconfig")[server].setup(opts)
+			-- end,
+			-- -- keys for a specific server name will be used for that LSP
+			-- sumneko_lua = function(server, opts)
+			--   -- custom sumneko_lua setup handler
+			--   require("lspconfig")["sumneko_lua"].setup(opts)
+			-- end,
+			rust_analyzer = function(_, opts)
+				require("rust-tools").setup({ server = opts })
+			end,
+		},
+		-- Add overrides for LSP server settings, the keys are the name of the server
+		config = {
+			-- example for addings schemas to yamlls
+			yamlls = {
+				-- override table for require("lspconfig").yamlls.setup({...})
+				settings = {
+					yaml = {
+						schemas = {
+							["http://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
+							["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+							["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
+						},
+					},
+				},
+			},
+			-- Add custom Nomic solidity LSP
+			-- nomic_solidity = {
+			-- 	cmd = { "nomicfoundation-solidity-language-server", "--stdio" },
+			-- 	root_dir = require("lspconfig.util").root_pattern("foundry.toml"),
+			-- 	filetypes = { "solidity" },
+			-- 	single_file_support = true,
+			-- },
+			-- circom = {
+   --  name = 'circom-lsp',
+   --  cmd = { 'circom-lsp' },
+   --  filetypes = { 'circom' },
+   --  root_dir = function()
+   --      return lsp.dir.find_first({ 'package.json' }) or vim.api.nvim_buf_get_name(0)
+   --  end,
+			-- },
+			-- Rust Analyzer
+			rust_analyzer = {
+				settings = {
+					["rust-analyzer"] = {
+						cargo = {
+							-- features = { "all" },
+						},
+            checkOnSave = {
+                command = "clippy"
+            },
+            rustfmt = {
+                extraArgs = { "+nightly" }
+            },
+					},
+				},
+			},
+		},
   },
   -- autocmd BufNewFile ~/.vimwiki/diary/[0-9]*.md :silent %!echo "\# `date -d '%:t:r' +'\%A, \%B \%d \%Y'`\n"
   vim.api.nvim_create_autocmd({ 'BufNewFile' }, {
