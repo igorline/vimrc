@@ -12,21 +12,21 @@ return {
 	-- Huff syntax highlighting
 	{ "wuwe1/vim-huff",           lazy = false },
 	-- Vimwiki
-	{ "vimwiki/vimwiki",           lazy = false, 
-   init = function () --replace 'config' with 'init'
-      -- vim.g.vimwiki_list = {{path = '~/Docs/Mywiki', syntax = 'markdown', ext = '.md'}}
+-- 	{ "vimwiki/vimwiki",           lazy = false, 
+--    init = function () --replace 'config' with 'init'
+--       -- vim.g.vimwiki_list = {{path = '~/Docs/Mywiki', syntax = 'markdown', ext = '.md'}}
 
-vim.g.vimwiki_list = {{
-      path = '~/Documents/wiki',
-      syntax = 'markdown',
-      ext='.md'
-      },
-      {
-      path= '~/Documents/wiki/studies',
-      syntax= 'markdown',
-      ext= '.md'
-      }
-    }
+-- vim.g.vimwiki_list = {{
+--       path = '~/Documents/wiki',
+--       syntax = 'markdown',
+--       ext='.md'
+--       },
+--       {
+--       path= '~/Documents/wiki/studies',
+--       syntax= 'markdown',
+--       ext= '.md'
+--       }
+--     }
 --[=====[ 
 syntax match atWord '@\w\+'
 highlight link atWord Special
