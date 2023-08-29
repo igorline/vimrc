@@ -148,6 +148,57 @@ return {
       },
     },
   },
+--   vim.api.nvim_create_autocmd('ColorScheme', {
+--   callback = function()
+--     local highlights = {
+--       'Normal',
+--       'LineNr',
+--       'Folded',
+--       'NonText',
+--       'SpecialKey',
+--       'VertSplit',
+--       'SignColumn',
+--       'EndOfBuffer',
+--       'TablineFill', -- this is specific to how I like my tabline to look like
+--     }
+--     for _, name in pairs(highlights) do vim.cmd.highlight(name .. ' guibg=none ctermbg=none') end 
+-- end, 
+-- });
+
+  -- set highlight group for any theme
+  -- the key is the name of the colorscheme or init
+  -- the init key will apply to all colorschemes
+  -- highlights = {
+  --   -- apply highlight group to all colorschemes (include the default_theme)
+  --   init = {
+  --     -- set the transparency for all of these highlight groups
+  --     Normal = { bg = "NONE", ctermbg = "NONE" },
+  --     NormalNC = { bg = "NONE", ctermbg = "NONE" },
+  --     CursorColumn = { cterm = {}, ctermbg = "NONE", ctermfg = "NONE" },
+  --     CursorLine = { cterm = {}, ctermbg = "NONE", ctermfg = "NONE" },
+  --     CursorLineNr = { cterm = {}, ctermbg = "NONE", ctermfg = "NONE" },
+  --     LineNr = {},
+  --     SignColumn = {},
+  --     StatusLine = {},
+  --     NeoTreeNormal = { bg = "NONE", ctermbg = "NONE" },
+  --     NeoTreeNormalNC = { bg = "NONE", ctermbg = "NONE" },
+  --   },
+  -- },
+  -- default_theme = {
+  --   highlights = function(hi)
+  --     local C = require "default_theme.colors"
+  --     hi.Normal = {bg = C.none, ctermbg = C.none}
+  --     hi.CursorColumn = {cterm = {}, ctermbg = C.none, ctermfg = C.none}
+  --     hi.CursorLine = {cterm = {}, ctermbg = C.none, ctermfg = C.none}
+  --     hi.CursorLineNr = {cterm = {}, ctermbg = C.none, ctermfg = C.none}
+  --     hi.LineNr = {}
+  --     hi.SignColumn = {}
+  --     hi.StatusLine = {}
+  --     hi.NeoTreeNormal = {bg = C.none, ctermbg = C.none}
+  --     hi.NeoTreeNormalNC = {bg = C.none, ctermbg = C.none}
+  --     return hi
+  --   end,
+  -- },
   -- This function is run last and is a good place to configuring
   -- augroups/autocommands and custom filetypes also this just pure lua so
 
