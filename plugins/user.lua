@@ -109,6 +109,10 @@ autocmd BufNewFile ~/Documents/diary/[0-9]*.md :silent %!echo "\# `date -d '%:t:
 vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
     end,
 },
+-- Rust tools
+{ "simrat39/rust-tools.nvim", lazy = false, config = function(plugin, opts)
+  require("symbols-outline").setup()
+  end,},
 {
   "L3MON4D3/LuaSnip",
   config = function(plugin, opts)
