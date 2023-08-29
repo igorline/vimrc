@@ -17,12 +17,12 @@ return {
       -- vim.g.vimwiki_list = {{path = '~/Docs/Mywiki', syntax = 'markdown', ext = '.md'}}
 
 vim.g.vimwiki_list = {{
-      path = '~/Documents/',
+      path = '~/Documents/wiki',
       syntax = 'markdown',
       ext='.md'
       },
       {
-      path= '~/Documents/studies',
+      path= '~/Documents/wiki/studies',
       syntax= 'markdown',
       ext= '.md'
       }
