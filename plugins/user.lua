@@ -86,6 +86,7 @@ autocmd BufNewFile ~/Documents/diary/[0-9]*.md :silent %!echo "\# `date -d '%:t:
 },
 { "rafamadriz/friendly-snippets" },
 { "EdenEast/nightfox.nvim" },
+{ "Shatur/neovim-ayu" },
 {
   "L3MON4D3/LuaSnip",
   config = function(plugin, opts)
