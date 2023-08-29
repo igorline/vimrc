@@ -82,8 +82,8 @@ au! BufRead,BufNewFile *.md.asc       set filetype=mkd syntax=markdown
 
 autocmd BufNewFile ~/Documents/diary/[0-9]*.md :silent %!echo "\# `date -d '%:t:r' +'\%A, \%B \%d \%Y'`\n"
 },--]=====]
-   end
-},
+--    end
+-- },
 { "rafamadriz/friendly-snippets" },
 { "EdenEast/nightfox.nvim" },
 { "Shatur/neovim-ayu" },
