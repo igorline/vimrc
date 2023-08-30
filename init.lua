@@ -113,22 +113,6 @@ return {
    --      return lsp.dir.find_first({ 'package.json' }) or vim.api.nvim_buf_get_name(0)
    --  end,
 			-- },
-			-- Rust Analyzer
-			rust_analyzer = {
-				settings = {
-					["rust-analyzer"] = {
-						cargo = {
-							-- features = { "all" },
-						},
-            checkOnSave = {
-                command = "clippy"
-            },
-            rustfmt = {
-                extraArgs = { "+nightly" }
-            },
-					},
-				},
-			},
 		},
   },
   -- autocmd BufNewFile ~/.vimwiki/diary/[0-9]*.md :silent %!echo "\# `date -d '%:t:r' +'\%A, \%B \%d \%Y'`\n"
