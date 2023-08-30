@@ -11,7 +11,6 @@ return {
   -- },
   -- Huff syntax highlighting
   { "wuwe1/vim-huff",                lazy = false },
-  { "rafamadriz/friendly-snippets" },
   { "EdenEast/nightfox.nvim" },
   { "Shatur/neovim-ayu" },
   { "simrat39/symbols-outline.nvim", lazy = false },
